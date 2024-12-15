@@ -169,70 +169,122 @@ export default function Home() {
 
   return (
     <>
-      <style>
-        {`
-        body, html {
-          overflow: hidden;
-          height: 100%;
-          margin: 0;
-        }
+<style>
+  {`
+    body, html {
+      overflow: hidden;
+      height: 100%;
+      margin: 0;
+    }
 
-        .toolbar {
-          padding: 10px;
-          background: #f5f5f5; /* Light theme background */
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          border-bottom: 2px solid #ddd;
-          transition: background 0.3s ease;
-        }
+    .toolbar {
+      padding: 8px 10px; /* Reduced padding for smaller navbar */
+      background: #f5f5f5; /* Light theme background */
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 2px solid #ddd;
+      transition: background 0.3s ease;
+    }
 
-        .button, .reset-btn, .eraser-btn, .run-btn {
-          padding: 8px 16px;
-          background-color: #007bff;
-          color: white;
-          border: none;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: background-color 0.3s ease;
-        }
+    .button, .reset-btn, .eraser-btn, .run-btn {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
 
-        .button:hover {
-          background-color: #0056b3;
-        }
+    .button:hover {
+      background-color: #0056b3;
+    }
 
-        .pen-size {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
+    .pen-size {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .pen-size-slider {
-          cursor: pointer;
-        }
+    .pen-size-slider {
+      cursor: pointer;
+    }
 
-        .latex-content {
-          animation: fadeIn 0.5s ease;
-        }
+    .latex-content {
+      animation: fadeIn 0.5s ease;
+    }
 
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .canvas {
-          border: 2px solid #ccc;
-          background-color: #fff; /* Canvas background to white */
-          transition: background-color 0.3s ease;
-        }
-      `}
-      </style>
+    .canvas {
+      border: 2px solid #ccc;
+      background-color: #fff; /* Canvas background to white */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Mobile View Adjustments (only for screens <= 768px) */
+    @media (max-width: 768px) {
+      /* Stack toolbar items vertically */
+      .toolbar {
+        flex-direction: column; /* Stack items in a column for mobile */
+        padding: 8px 10px; /* Reduced padding for smaller navbar */
+      }
+
+      /* Make the buttons full width and increase their size */
+      .button, .reset-btn, .eraser-btn, .run-btn {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 5px 0;
+      }
+
+      /* Adjust the pen-size control layout for mobile */
+      .pen-size {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* Make the slider fit the screen */
+      .pen-size-slider {
+        width: 100%;
+      }
+
+      /* Ensure the canvas takes enough space without getting hidden by navbar */
+      .canvas {
+        height: calc(100vh - 140px); /* Adjust canvas height considering the navbar */
+      }
+
+      /* Ensure latex content fits on smaller screens */
+      .latex-container {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+
+    /* Extra adjustments for very small screens (e.g., small phones) */
+    @media (max-width: 480px) {
+      .button, .reset-btn, .eraser-btn, .run-btn {
+        font-size: 14px; /* Smaller text for buttons */
+      }
+
+      .pen-size-slider {
+        height: 10px; /* Adjust slider height for smaller devices */
+      }
+    }
+  `}
+</style>
+
 
       <div>
         <div className="toolbar">
