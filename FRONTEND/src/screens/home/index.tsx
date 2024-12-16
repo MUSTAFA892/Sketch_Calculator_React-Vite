@@ -31,13 +31,7 @@ export default function Home() {
   const [isEraser, setIsEraser] = useState(false);
   const [canvasImage, setCanvasImage] = useState<string | null>(null); // To store the canvas image before size change
 
-  useEffect(() => {
-    if (latexExpression.length > 0 && window.MathJax) {
-      setTimeout(() => {
-        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
-      }, 0);
-    }
-  }, [latexExpression]);
+
 
   useEffect(() => {
     if (result) {

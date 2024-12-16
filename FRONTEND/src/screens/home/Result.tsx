@@ -1,4 +1,3 @@
-// src/screens/result/ResultPage.tsx
 import { Container, Text, Title, Card, Button, Group } from '@mantine/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ const ResultPage = () => {
 
   return (
     <Container style={{ padding: '30px' }}>
-      <Title align="center" order={1} style={{ marginBottom: '20px' }}>
+      <Title  order={1} style={{ marginBottom: '20px' }}>
         Result
       </Title>
 
@@ -28,12 +27,13 @@ const ResultPage = () => {
         <Title order={2} style={{ marginBottom: '10px' }}>
           Answer:
         </Title>
-        <Text size="lg" weight={500} color="teal">
+        <Text size="lg"  color="teal">
           {result.answer}
         </Text>
       </Card>
 
-      <Group position="center">
+      {/* Fixing the centering of the button */}
+      <Group style={{ display: 'flex', justifyContent: 'center' }}>
         <Button onClick={() => navigate('/')} variant="outline" size="lg">
           Go Back
         </Button>
